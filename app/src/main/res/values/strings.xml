@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Phone Bill</string>
+    <string name="hello">Hello Advanced Programming with Java!</string>
 </resources>

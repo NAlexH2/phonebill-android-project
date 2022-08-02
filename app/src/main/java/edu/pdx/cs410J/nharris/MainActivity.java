@@ -18,4 +18,8 @@ public class MainActivity extends AppCompatActivity {
         PhoneCall call = new PhoneCall();
         Toast.makeText(this, "This call is: " + call, Toast.LENGTH_SHORT).show();
     }
+
+    public void readmeViewer(View view) {
+
+    }
 }

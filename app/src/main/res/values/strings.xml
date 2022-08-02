@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Phone Bill</string>
     <string name="help">Help</string>
+    <string name="readme">
+        <big><big><b>Readme: \n\n</b></big></big>
+        "This app is designed to track any number of customer phone \n"
+        "bills. From the main menu you can select any of the following \n buttons: \n"
+        "\n <b>- Help: </b>Displays this screen."
+        "\n <b>- New Customer: </b> Create a new entry for a new customer to
+         \n store their phone calls."
+        "\n <b>- Add Call to Existing Customer: </b> Add a call to an already \n
+        existing customer."
+        "- A customer\'s name, callers phone number, receiving\n
+        \t\t\t  phone number, dates and times the call started and ended,\n
+        \t\t\t  where time is in a 12 hour format with AM and PM\n
+        \t\t\t  indicators."
+        "\n <b>- Search: </b> Search a customers phone bill with specified date\n
+        ranges you provide."
+        "\n <b>- ?????: </b>"
+    </string>
 </resources>

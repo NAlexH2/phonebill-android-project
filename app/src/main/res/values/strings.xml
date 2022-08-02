@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Phone Bill</string>
-    <string name="hello">Hello Bobby!</string>
-    <string name="click_me">Click Me!</string>
+    <string name="help">Help</string>
 </resources>

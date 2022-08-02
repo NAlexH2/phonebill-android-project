@@ -18,4 +18,12 @@
         ranges you provide."
         "\n <b>- ?????: </b>"
     </string>
+    <string name="view_customers">View Customers</string>
+    <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
+    <string name="customer_list_is_empty">
+        Customer list is empty! Click \"Add Customer\" to update this list
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_customer">Add Customer</string>
 </resources>

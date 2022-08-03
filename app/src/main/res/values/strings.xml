@@ -1,29 +1,26 @@
 <resources>
-    <string name="app_name">Phone Bill</string>
-    <string name="help">Help</string>
-    <string name="readme">
-        <big><big><b>Readme: \n\n</b></big></big>
-        "This app is designed to track any number of customer phone \n"
-        "bills. From the main menu you can select any of the following \n buttons: \n"
+  <string name="app_name">Phone Bill</string>
+  <string name="readme">
+        "\n This app is designed to track any number of customer phone \n"
+        "bills. From the main menu you can select either of the \n following buttons: \n"
         "\n <b>- Help: </b>Displays this screen."
-        "\n <b>- New Customer: </b> Create a new entry for a new customer to
-         \n store their phone calls."
-        "\n <b>- Add Call to Existing Customer: </b> Add a call to an already \n
-        existing customer."
-        "- A customer\'s name, callers phone number, receiving\n
-        \t\t\t  phone number, dates and times the call started and ended,\n
-        \t\t\t  where time is in a 12 hour format with AM and PM\n
-        \t\t\t  indicators."
-        "\n <b>- Search: </b> Search a customers phone bill with specified date\n
-        ranges you provide."
-        "\n <b>- ?????: </b>"
+        "\n <b>- Manage Customers: </b> Create a new entry for a new customer
+         \n to store their phone calls."\n\n
+
+        <big><b>Manage Customers - What is it good for?\n\n</b></big>
+
+
     </string>
-    <string name="view_customers">View Customers</string>
-    <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
-    <string name="customer_list_is_empty">
-        Customer list is empty! Click \"Add Customer\" to update this list
+  <string name="help">Help</string>
+  <string name="customers_activity_ab_title">Customer List</string>
+  <string name="manage_customers">Manage Customers</string>
+  <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
+  <string name="customer_list_is_empty">
+        Customer list is empty! Click \"Add Customer\" to update this list.
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="add_customer">Add Customer</string>
+  <string name="add_customer">Add Customer</string>
+  <string name="customer_name">Customer Name</string>
+  <string name="submit">Submit</string>
+  <string name="readme_activity_ab_title">README</string>
+  <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
 </resources>

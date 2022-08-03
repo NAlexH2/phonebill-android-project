@@ -3,8 +3,9 @@ package edu.pdx.cs410J.nharris;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Objects;
 
 
@@ -46,6 +50,7 @@ public class CustomersActivity extends AppCompatActivity {
       AlertDialog.Builder customerNameAlertBox =
           new AlertDialog.Builder(CustomersActivity.this);
       customerNameAlertBox.setTitle("Customer Name");
+      customerNameAlertBox.setMessage("Invalid characters: \n<,  >,  :,  \\,  |,  ?,  *,  \\\\,  //");
 
       //Inserts a text field of some type determined....
       EditText cNameInput = new EditText(CustomersActivity.this);
@@ -57,7 +62,7 @@ public class CustomersActivity extends AppCompatActivity {
           (dialogInterface, i) -> {
             customerName = cNameInput.getText().toString();
             if(!customerName.isEmpty()) {
-
+              makeCustomerFile(customerName);
             }
             else
               Toast.makeText(getBaseContext(),
@@ -67,12 +72,27 @@ public class CustomersActivity extends AppCompatActivity {
 
       customerNameAlertBox.setNegativeButton("Cancel",
           (dialogInterface, i) -> dialogInterface.cancel());
-
       customerNameAlertBox.show();
     });
   }
 
   void makeCustomerFile (String customerName) {
-
+    String[] invalidChars = new String[]{"<", ">", ":", "\"", "|", "?", "*", "\\\\", "//"};
+    for (String i : invalidChars) {
+      if (customerName.contains(i)) {
+        Toast.makeText(getBaseContext(),
+            "Customer name contains invalid characters!", Toast.LENGTH_LONG).show();
+        return;
+      }
+    }
+    String fileName = customerName + ".txt";
+//    File file = new File(Environment.getExternalStorageDirectory(), fileName);
+//    try {
+//      FileOutputStream fos = new FileOutputStream(fileName);
+//
+//    } catch (FileNotFoundException ex) {
+//      Toast.makeText(getBaseContext(),
+//          "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
+//    }
   }
 }

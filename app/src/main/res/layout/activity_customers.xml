@@ -7,29 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".CustomersActivity">
 
-    <ScrollView
-        android:id="@+id/customer_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_customer_button">
-
-    </ScrollView>
+    <ListView
+      android:id="@+id/customer_list"
+      android:layout_width="wrap_content"
+      android:layout_height="580dp"
+      android:layout_marginTop="57dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/add_customer_button" />
 
     <Button
-        android:id="@+id/add_customer_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/add_customer"
-        app:layout_constraintBottom_toTopOf="@+id/customer_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/add_customer_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="45dp"
+      android:text="@string/add_customer"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/empty_list_alert"

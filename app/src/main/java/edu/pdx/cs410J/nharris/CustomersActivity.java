@@ -6,14 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -21,15 +22,21 @@ public class CustomersActivity extends AppCompatActivity {
 
   private Button addCustomerButton;
   private String customerName = "";
-  private ArrayList<PhoneBill> allCustomerBills = new ArrayList<>();
+  private ArrayAdapter<PhoneBill> allCustomerBills;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_customers);
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.customers_activity_ab_title);
+    ListView customerList = findViewById(R.id.customer_list);
     TextView textView = findViewById(R.id.empty_list_alert);
     addCustomerButton = findViewById(R.id.add_customer_button);
+
+    //Load customer bills if any in app's data storage
+    refreshCustomerList(allCustomerBills);
+    customerList.setAdapter(allCustomerBills);
+
 
     //Call this function super quick to simply establish the event listener in the class.
     addCustomerShowPopup(getCurrentFocus());
@@ -62,6 +69,7 @@ public class CustomersActivity extends AppCompatActivity {
             customerName = cNameInput.getText().toString();
             if(!customerName.isEmpty()) {
               makeCustomerFile(customerName);
+              refreshCustomerList(allCustomerBills);
             }
             else
               Toast.makeText(getBaseContext(),
@@ -75,6 +83,7 @@ public class CustomersActivity extends AppCompatActivity {
     });
   }
 
+
   void makeCustomerFile (String customerName) {
     String[] invalidChars = new String[]{"<", ">", ":", "\"", "|", "?", "*", "\\\\", "//"};
     for (String i : invalidChars) {
@@ -86,13 +95,21 @@ public class CustomersActivity extends AppCompatActivity {
     }
     String fileName = customerName + ".txt";
     File file = new File(getFilesDir(), fileName);
-    try {
-      file.createNewFile();
-      Toast.makeText(getBaseContext(),
-              "Customer file created!", Toast.LENGTH_LONG).show();
-    } catch (IOException ex) {
-      Toast.makeText(getBaseContext(),
-          "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
+    if(!file.exists()) {
+      try {
+        file.createNewFile();
+        Toast.makeText(getBaseContext(),
+            "Customer file created!", Toast.LENGTH_LONG).show();
+      } catch (IOException ex) {
+        Toast.makeText(getBaseContext(),
+            "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
+      }
     }
+    else Toast.makeText(getBaseContext(),
+        "Customer already on file", Toast.LENGTH_LONG).show();
+  }
+
+  private void refreshCustomerList(ArrayAdapter<PhoneBill> allCustomerBills) {
+
   }
 }

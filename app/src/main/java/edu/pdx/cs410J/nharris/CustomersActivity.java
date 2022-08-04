@@ -3,9 +3,7 @@ package edu.pdx.cs410J.nharris;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -23,6 +21,7 @@ public class CustomersActivity extends AppCompatActivity {
 
   private Button addCustomerButton;
   private String customerName = "";
+  private ArrayList<PhoneBill> allCustomerBills = new ArrayList<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class CustomersActivity extends AppCompatActivity {
       AlertDialog.Builder customerNameAlertBox =
           new AlertDialog.Builder(CustomersActivity.this);
       customerNameAlertBox.setTitle("Customer Name");
-      customerNameAlertBox.setMessage("Invalid characters: \n<,  >,  :,  \\,  |,  ?,  *,  \\\\,  //");
+      customerNameAlertBox.setMessage("Invalid characters: \n<  >  :  \\  |  ?  *  \\\\  //");
 
       //Inserts a text field of some type determined....
       EditText cNameInput = new EditText(CustomersActivity.this);
@@ -86,13 +85,14 @@ public class CustomersActivity extends AppCompatActivity {
       }
     }
     String fileName = customerName + ".txt";
-//    File file = new File(Environment.getExternalStorageDirectory(), fileName);
-//    try {
-//      FileOutputStream fos = new FileOutputStream(fileName);
-//
-//    } catch (FileNotFoundException ex) {
-//      Toast.makeText(getBaseContext(),
-//          "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
-//    }
+    File file = new File(getFilesDir(), fileName);
+    try {
+      file.createNewFile();
+      Toast.makeText(getBaseContext(),
+              "Customer file created!", Toast.LENGTH_LONG).show();
+    } catch (IOException ex) {
+      Toast.makeText(getBaseContext(),
+          "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
+    }
   }
 }

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void gotoCustomerManagerActivity(View view) {
-    Intent intent = new Intent(this, CustomersActivity.class);
+    Intent intent = new Intent(this, CustomerManagerActivity.class);
     startActivity(intent);
   }
 }

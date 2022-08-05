@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class CustomersActivity extends AppCompatActivity {
+public class CustomerManagerActivity extends AppCompatActivity {
 
   private Button addCustomerButton;
   private String customerName = "";
@@ -62,7 +62,7 @@ public class CustomersActivity extends AppCompatActivity {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getBaseContext(),
-                "ITEM WAS CLICKED WEEEW!!!!!", Toast.LENGTH_LONG).show();
+                "ITEM " + " WAS CLICKED WEEEW!!!!!", Toast.LENGTH_SHORT).show();
       }
     });
   }
@@ -71,12 +71,12 @@ public class CustomersActivity extends AppCompatActivity {
     this.addCustomerButton.setOnClickListener(view1 -> {
       //Simple popup alert box! Fantastic!
       AlertDialog.Builder customerNameAlertBox =
-          new AlertDialog.Builder(CustomersActivity.this);
+          new AlertDialog.Builder(CustomerManagerActivity.this);
       customerNameAlertBox.setTitle("Customer Name");
       customerNameAlertBox.setMessage("Invalid characters: \n<  >  :  \\  |  ?  *  \\\\  //");
 
       //Inserts a text field of some type determined....
-      EditText cNameInput = new EditText(CustomersActivity.this);
+      EditText cNameInput = new EditText(CustomerManagerActivity.this);
       //HERE!
       cNameInput.setInputType(InputType.TYPE_CLASS_TEXT |
           InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
@@ -116,7 +116,7 @@ public class CustomersActivity extends AppCompatActivity {
       try {
         file.createNewFile();
         Toast.makeText(getBaseContext(),
-            "Customer file created!", Toast.LENGTH_LONG).show();
+            "Customer file created!", Toast.LENGTH_SHORT).show();
       } catch (IOException ex) {
         Toast.makeText(getBaseContext(),
             "Unable to create file. Try again.", Toast.LENGTH_LONG).show();

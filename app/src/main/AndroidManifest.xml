@@ -14,7 +14,7 @@
         android:theme="@style/Theme.PhoneBill"
         tools:targetApi="31">
         <activity
-            android:name=".CustomersActivity"
+            android:name=".CustomerManagerActivity"
             android:exported="false" />
         <activity
             android:name=".ReadmeActivity"

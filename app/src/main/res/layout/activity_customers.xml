@@ -1,55 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/all_customers"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".CustomersActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_customers"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomersActivity">
 
     <LinearLayout
-      android:layout_width="409dp"
-      android:layout_height="570dp"
-      android:layout_marginTop="70dp"
-      android:layout_marginBottom="49dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/add_customer_button"
-      app:layout_constraintVertical_bias="0.0">
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customer_manager_instructions">
 
         <ListView
-          android:id="@+id/customer_list"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          tools:showIn="@layout/activity_customers" />
+            android:id="@+id/customer_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:showIn="@layout/activity_customers" />
     </LinearLayout>
 
     <Button
-      android:id="@+id/add_customer_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="130dp"
-      android:layout_marginTop="45dp"
-      android:layout_marginEnd="129dp"
-      android:text="@string/add_customer"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/add_customer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/add_customer"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-      android:id="@+id/empty_list_alert"
-      android:layout_width="0dp"
-      android:layout_height="103dp"
-      android:text="@string/customer_list_is_empty"
-      android:textAlignment="center"
-      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-      android:visibility="gone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.5"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/empty_list_alert"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:text="@string/customer_list_is_empty"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/customer_manager_instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/customer_instructions"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

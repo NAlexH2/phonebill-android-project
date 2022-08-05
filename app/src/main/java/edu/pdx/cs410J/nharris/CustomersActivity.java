@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,9 @@ public class CustomersActivity extends AppCompatActivity {
   private ArrayAdapter<String> allCustomerBills;
   private File appPath;
   ListView customerList;
-  TextView textView;
+  TextView empty_list_alert;
+  TextView customer_manager_instructions;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +39,36 @@ public class CustomersActivity extends AppCompatActivity {
     this.appPath = getFilesDir();
     this.allCustomerBills = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.customers_activity_ab_title);
-    customerList = findViewById(R.id.customer_list);
-    textView = findViewById(R.id.empty_list_alert);
+    this.customerList = findViewById(R.id.customer_list);
+    this.empty_list_alert = findViewById(R.id.empty_list_alert);
+    this.customer_manager_instructions = findViewById(R.id.customer_manager_instructions);
 
-    addCustomerButton = findViewById(R.id.add_customer_button);
+    this.addCustomerButton = findViewById(R.id.add_customer_button);
 
     //Load customer bills if any in app's data storage
     refreshCustomerList(allCustomerBills);
-    customerList.setAdapter(allCustomerBills);
+    this.customerList.setAdapter(allCustomerBills);
     areThereCustomers();
 
-    //Call this function super quick to simply establish the event listener in the class.
+    //Call these function super quick to simply establish the event listeners in the class
+    //other wise the buttons must be tapped 2x to take effect.
     addCustomerShowPopup(getCurrentFocus());
+    onListViewClick();
 
   }
 
+  public void onListViewClick() {
+    this.customerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getBaseContext(),
+                "ITEM WAS CLICKED WEEEW!!!!!", Toast.LENGTH_LONG).show();
+      }
+    });
+  }
+
   public void addCustomerShowPopup(View view) {
-    addCustomerButton.setOnClickListener(view1 -> {
+    this.addCustomerButton.setOnClickListener(view1 -> {
       //Simple popup alert box! Fantastic!
       AlertDialog.Builder customerNameAlertBox =
           new AlertDialog.Builder(CustomersActivity.this);
@@ -67,10 +83,10 @@ public class CustomersActivity extends AppCompatActivity {
       customerNameAlertBox.setView(cNameInput);
       customerNameAlertBox.setPositiveButton("Add Customer",
           (dialogInterface, i) -> {
-            customerName = cNameInput.getText().toString();
+            this.customerName = cNameInput.getText().toString();
             if(!customerName.isEmpty()) {
-              makeCustomerFile(customerName);
-              refreshCustomerList(allCustomerBills);
+              makeCustomerFile(this.customerName);
+              refreshCustomerList(this.allCustomerBills);
             }
             else
               Toast.makeText(getBaseContext(),
@@ -125,9 +141,13 @@ public class CustomersActivity extends AppCompatActivity {
   }
 
   private void areThereCustomers() {
-    if(allCustomerBills.isEmpty()) {
-      textView.setVisibility(View.VISIBLE);
+    if(this.allCustomerBills.isEmpty()) {
+      this.customer_manager_instructions.setVisibility(View.INVISIBLE);
+      this.empty_list_alert.setVisibility(View.VISIBLE);
     }
-    else textView.setVisibility(View.GONE);
+    else {
+      this.empty_list_alert.setVisibility(View.GONE);
+      this.customer_manager_instructions.setVisibility(View.VISIBLE);
+    }
   }
 }

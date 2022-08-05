@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
@@ -22,31 +24,30 @@ public class CustomersActivity extends AppCompatActivity {
 
   private Button addCustomerButton;
   private String customerName = "";
-  private ArrayAdapter<PhoneBill> allCustomerBills;
+  private ArrayAdapter<String> allCustomerBills;
+  private File appPath;
+  ListView customerList;
+  TextView textView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_customers);
+    this.appPath = getFilesDir();
+    this.allCustomerBills = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.customers_activity_ab_title);
-    ListView customerList = findViewById(R.id.customer_list);
-    TextView textView = findViewById(R.id.empty_list_alert);
+    customerList = findViewById(R.id.customer_list);
+    textView = findViewById(R.id.empty_list_alert);
+
     addCustomerButton = findViewById(R.id.add_customer_button);
 
     //Load customer bills if any in app's data storage
     refreshCustomerList(allCustomerBills);
     customerList.setAdapter(allCustomerBills);
-
+    areThereCustomers();
 
     //Call this function super quick to simply establish the event listener in the class.
     addCustomerShowPopup(getCurrentFocus());
-
-    // TODO: 8/2/2022 figure out if the list is empty some how and then display this message
-    // based on that.\
-
-    if(1+1==2) {
-      textView.setVisibility(View.VISIBLE);
-    }
 
   }
 
@@ -94,7 +95,7 @@ public class CustomersActivity extends AppCompatActivity {
       }
     }
     String fileName = customerName + ".txt";
-    File file = new File(getFilesDir(), fileName);
+    File file = new File(this.appPath, fileName);
     if(!file.exists()) {
       try {
         file.createNewFile();
@@ -109,7 +110,24 @@ public class CustomersActivity extends AppCompatActivity {
         "Customer already on file", Toast.LENGTH_LONG).show();
   }
 
-  private void refreshCustomerList(ArrayAdapter<PhoneBill> allCustomerBills) {
+  private void refreshCustomerList(ArrayAdapter<String> allCustomerBills) {
+    if(Objects.requireNonNull(this.appPath.listFiles()).length != 0) {
+      File[] files = Objects.requireNonNull(this.appPath.listFiles());
+      String[] customerFileNames = new String[Objects.requireNonNull(this.appPath.list()).length];
+      for (int i = 0; i < files.length; ++i) {
+        customerFileNames[i] = FilenameUtils.removeExtension(files[i].getName());
+        if(this.allCustomerBills.getPosition(customerFileNames[i]) == -1) {
+          this.allCustomerBills.add(customerFileNames[i]);
+        }
+      }
+    }
+    areThereCustomers();
+  }
 
+  private void areThereCustomers() {
+    if(allCustomerBills.isEmpty()) {
+      textView.setVisibility(View.VISIBLE);
+    }
+    else textView.setVisibility(View.GONE);
   }
 }

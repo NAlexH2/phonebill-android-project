@@ -7,18 +7,18 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/view_customers"
-        android:layout_width="210dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginEnd="121dp"
-        android:layout_marginBottom="324dp"
-        android:onClick="gotoCustomerManagerActivity"
-        android:text="@string/manage_customers"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent" />
+      android:id="@+id/view_customers"
+      android:layout_width="210dp"
+      android:layout_height="64dp"
+      android:layout_marginStart="121dp"
+      android:layout_marginEnd="121dp"
+      android:layout_marginBottom="324dp"
+      android:onClick="gotoCustomerManagerActivity"
+      android:text="@string/manage_customers"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.512"
+      app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/help_button"

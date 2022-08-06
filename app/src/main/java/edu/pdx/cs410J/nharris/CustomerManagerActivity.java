@@ -26,11 +26,11 @@ public class CustomerManagerActivity extends AppCompatActivity {
 
   private Button addCustomerButton;
   private String customerName = "";
-  private ArrayAdapter<String> allCustomerBills;
+  private ArrayAdapter<String> allCustomers;
   private File appPath;
-  ListView customerList;
-  TextView empty_list_alert;
-  TextView customer_manager_instructions;
+  private ListView customerList;
+  private TextView emptyListAlert;
+  private TextView customerManagerInstructions;
 
 
   @Override
@@ -38,17 +38,18 @@ public class CustomerManagerActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_customers);
     this.appPath = getFilesDir();
-    this.allCustomerBills = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+    this.allCustomers = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+    //Set the actionBar (place with title) to something else.
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.customers_activity_ab_title);
     this.customerList = findViewById(R.id.customer_list);
-    this.empty_list_alert = findViewById(R.id.empty_list_alert);
-    this.customer_manager_instructions = findViewById(R.id.customer_manager_instructions);
+    this.emptyListAlert = findViewById(R.id.empty_list_alert);
+    this.customerManagerInstructions = findViewById(R.id.customer_manager_instructions);
 
     this.addCustomerButton = findViewById(R.id.add_customer_button);
 
     //Load customer bills if any in app's data storage
-    refreshCustomerList(allCustomerBills);
-    this.customerList.setAdapter(allCustomerBills);
+    refreshCustomerList(allCustomers);
+    this.customerList.setAdapter(allCustomers);
     areThereCustomers();
 
     //Call these function super quick to simply establish the event listeners in the class
@@ -64,7 +65,7 @@ public class CustomerManagerActivity extends AppCompatActivity {
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String selected_customer = (String) parent.getItemAtPosition(position);
         Intent intent = new Intent(getBaseContext(), CustomersPhoneBillActivity.class);
-//        intent.putExtra;
+        intent.putExtra("custInfo", selected_customer);
         startActivity(intent);
       }
     });
@@ -89,7 +90,7 @@ public class CustomerManagerActivity extends AppCompatActivity {
             this.customerName = cNameInput.getText().toString();
             if(!customerName.isEmpty()) {
               makeCustomerFile(this.customerName);
-              refreshCustomerList(this.allCustomerBills);
+              refreshCustomerList(this.allCustomers);
             }
             else
               Toast.makeText(getBaseContext(),
@@ -135,8 +136,8 @@ public class CustomerManagerActivity extends AppCompatActivity {
       String[] customerFileNames = new String[Objects.requireNonNull(this.appPath.list()).length];
       for (int i = 0; i < files.length; ++i) {
         customerFileNames[i] = FilenameUtils.removeExtension(files[i].getName());
-        if(this.allCustomerBills.getPosition(customerFileNames[i]) == -1) {
-          this.allCustomerBills.add(customerFileNames[i]);
+        if(this.allCustomers.getPosition(customerFileNames[i]) == -1) {
+          this.allCustomers.add(customerFileNames[i]);
         }
       }
     }
@@ -144,13 +145,13 @@ public class CustomerManagerActivity extends AppCompatActivity {
   }
 
   private void areThereCustomers() {
-    if(this.allCustomerBills.isEmpty()) {
-      this.customer_manager_instructions.setVisibility(View.INVISIBLE);
-      this.empty_list_alert.setVisibility(View.VISIBLE);
+    if(this.allCustomers.isEmpty()) {
+      this.customerManagerInstructions.setVisibility(View.INVISIBLE);
+      this.emptyListAlert.setVisibility(View.VISIBLE);
     }
     else {
-      this.empty_list_alert.setVisibility(View.GONE);
-      this.customer_manager_instructions.setVisibility(View.VISIBLE);
+      this.emptyListAlert.setVisibility(View.GONE);
+      this.customerManagerInstructions.setVisibility(View.VISIBLE);
     }
   }
 }

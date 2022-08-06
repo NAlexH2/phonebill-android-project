@@ -1,6 +1,6 @@
 <resources>
-  <string name="app_name">Phone Bill</string>
-  <string name="readme">
+    <string name="app_name">Phone Bill</string>
+    <string name="readme">
         "\n This app is designed to track any number of customer phone \n"
         "bills. From the main menu you can select either of the \n following buttons: \n"
         "\n <b>- Help: </b>Displays this screen."
@@ -11,17 +11,17 @@
 
 
     </string>
-  <string name="help">Help</string>
-  <string name="customers_activity_ab_title">Customer List</string>
-  <string name="manage_customers">Manage Customers</string>
-  <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
-  <string name="customer_list_is_empty">
+    <string name="help">Help</string>
+    <string name="customers_activity_ab_title">Customer List</string>
+    <string name="manage_customers">Manage Customers</string>
+    <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
+    <string name="customer_list_is_empty">
         Customer list is empty! Click \"Add Customer\" to update this list.
     </string>
-  <string name="add_customer">Add Customer</string>
-  <string name="customer_name">Customer Name</string>
-  <string name="submit">Submit</string>
-  <string name="readme_activity_ab_title">README</string>
-  <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="submit">Submit</string>
+    <string name="readme_activity_ab_title">README</string>
+    <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
     <string name="customer_instructions">Tap a customer to perform additional operations</string>
 </resources>

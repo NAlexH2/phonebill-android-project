@@ -3,6 +3,7 @@ package edu.pdx.cs410J.nharris;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -53,16 +54,18 @@ public class CustomerManagerActivity extends AppCompatActivity {
     //Call these function super quick to simply establish the event listeners in the class
     //other wise the buttons must be tapped 2x to take effect.
     addCustomerShowPopup(getCurrentFocus());
-    onListViewClick();
+    onListViewClick(getCurrentFocus());
 
   }
 
-  public void onListViewClick() {
+  public void onListViewClick(View view) {
     this.customerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getBaseContext(),
-                "ITEM " + " WAS CLICKED WEEEW!!!!!", Toast.LENGTH_SHORT).show();
+        String selected_customer = (String) parent.getItemAtPosition(position);
+        Intent intent = new Intent(getBaseContext(), CustomersPhoneBillActivity.class);
+//        intent.putExtra;
+        startActivity(intent);
       }
     });
   }

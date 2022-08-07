@@ -98,7 +98,7 @@ public class CustomersPhoneBillActivity extends AppCompatActivity {
   }
 
   public void pushCallToCurrentCustomer(View view) {
-    Intent intent = new Intent(this, CallInfoInput.class);
+    Intent intent = new Intent(this, CallDetailsActivity.class);
     intent.putExtra("custName",this.customerName);
     startActivityForResult(intent, REQUEST_CODE_RESULT_ADD);
   }

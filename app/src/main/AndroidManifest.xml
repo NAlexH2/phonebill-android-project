@@ -17,7 +17,7 @@
       android:name=".SearchCallsActivity"
       android:exported="false" />
     <activity
-      android:name=".CallInfoInput"
+      android:name=".CallDetailsActivity"
       android:exported="false" />
     <activity
       android:name=".CustomersPhoneBillActivity"

@@ -44,14 +44,18 @@ public class SearchCallsActivity extends AppCompatActivity {
     String combinedStart = startDate + " " + startTime + " " + startToD;
     String combinedEnd = endDate + " " + endTime + " " + endToD;
     String[] searchInfo = new String[]{startDate, startTime, startToD, endDate, endTime, endToD};
+
+    if(!validation(searchInfo))
+      return;
+
     PhoneCall call = new PhoneCall(null);
-    try {
-      ip.dateTimeValidator(call, combinedStart, combinedEnd);
-    } catch (InformationParser.CommandLineParserException ex) {
-      Toast.makeText(this, "Bad date format: " + ex.getMessage(), Toast.LENGTH_LONG)
-          .show();
-      setResult(RESULT_CANCELED, null);
-    }
+    String result;
+      result = ip.dateTimeValidator(call, combinedStart, combinedEnd);
+      if(!result.isEmpty()) {
+        Toast.makeText(this, "Bad date format: " + result, Toast.LENGTH_LONG)
+            .show();
+        return;
+      }
 
     currentIntent.putExtra("searchInfo", searchInfo);
     setResult(RESULT_OK, currentIntent);
@@ -61,5 +65,35 @@ public class SearchCallsActivity extends AppCompatActivity {
   public void onCancel(View view) {
     setResult(RESULT_CANCELED, null);
     finish();
+  }
+
+  private boolean validation(String[] callInfo) {
+    boolean areWeOkay = true;
+
+    if(callInfo[0].isEmpty()) {
+      this.startDate.setError("Error. Date is required. Format: mm/dd/yyyy");
+      areWeOkay = false;
+    }
+    else this.startDate.setError(null);
+
+    if(callInfo[1].isEmpty()) {
+      this.startTime.setError("Error. Time is required. Format: hh:mm");
+      areWeOkay = false;
+    }
+    else this.startTime.setError(null);
+
+    if(callInfo[3].isEmpty()) {
+      this.endDate.setError("Error. Date is required. Format: mm/dd/yyyy");
+      areWeOkay = false;
+    }
+    else this.endDate.setError(null);
+
+    if(callInfo[4].isEmpty()) {
+      this.endTime.setError("Error. Time is required. Format: hh:mm");
+      areWeOkay = false;
+    }
+    else this.endTime.setError(null);
+
+    return areWeOkay;
   }
 }

@@ -60,14 +60,11 @@ public class CustomerManagerActivity extends AppCompatActivity {
   }
 
   public void onListViewClick(View view) {
-    this.customerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String selected_customer = (String) parent.getItemAtPosition(position);
-        Intent intent = new Intent(getBaseContext(), CustomersPhoneBillActivity.class);
-        intent.putExtra("custInfo", selected_customer);
-        startActivity(intent);
-      }
+    this.customerList.setOnItemClickListener((parent, view1, position, id) -> {
+      String selected_customer = (String) parent.getItemAtPosition(position);
+      Intent intent = new Intent(getBaseContext(), CustomersPhoneBillActivity.class);
+      intent.putExtra("custInfo", selected_customer);
+      startActivity(intent);
     });
   }
 
@@ -136,7 +133,8 @@ public class CustomerManagerActivity extends AppCompatActivity {
       String[] customerFileNames = new String[Objects.requireNonNull(this.appPath.list()).length];
       for (int i = 0; i < files.length; ++i) {
         customerFileNames[i] = FilenameUtils.removeExtension(files[i].getName());
-        if(this.allCustomers.getPosition(customerFileNames[i]) == -1) {
+        if(this.allCustomers.getPosition(customerFileNames[i]) == -1
+            && !customerFileNames[i].contains("rList")) {
           this.allCustomers.add(customerFileNames[i]);
         }
       }

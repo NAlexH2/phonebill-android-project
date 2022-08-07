@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class SearchCallsActivity extends AppCompatActivity {
 
   private Spinner startToD, endToD;
@@ -19,6 +21,8 @@ public class SearchCallsActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_calls);
+    Objects.requireNonNull(getSupportActionBar()).setTitle("Searching Phone Calls");
+
     ArrayAdapter<String> timeOfDaySpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
     timeOfDaySpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     timeOfDaySpinner.addAll("AM","PM");

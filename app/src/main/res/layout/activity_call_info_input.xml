@@ -41,12 +41,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
+    android:layout_marginEnd="185dp"
     android:autofillHints=""
     android:ems="10"
     android:hint="@string/hh_mm"
     android:inputType="time"
     android:minHeight="48dp"
     android:textColorHint="#757575"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/editTextDate2"
     tools:ignore="DuplicateSpeakableTextCheck" />
@@ -191,6 +193,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/editTextTime2"
     app:layout_constraintTop_toBottomOf="@+id/amPMSpinner"
-    tools:ignore="SpeakableTextPresentCheck" />
+    tools:ignore="SpeakableTextPresentCheck"
+    tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,4 +28,13 @@
     <string name="add_call">Add</string>
     <string name="search_call">Search</string>
     <string name="reset">Reset</string>
+    <string name="divider">divider</string>
+    <string name="info_input_tip">Enter the information for the phone call you wish to add</string>
+    <string name="input_hint_caller">Caller Phone Number</string>
+    <string name="input_hint_callee">Callee Phone Number</string>
+    <string name="start_date_and_time">Start Date and Time</string>
+    <string name="end_date_and_time">End Date and Time</string>
+    <string name="mm_dd_yyyy">mm/dd/yyyy</string>
+    <string name="hh_mm">hh:mm</string>
+    <string name="how_calls_are">Below are calls in ascending order by date</string>
 </resources>

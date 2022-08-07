@@ -14,7 +14,6 @@ import java.util.Date;
  * command line to be provided to <code>WebPhoneBill</code>.
  */
 public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall>{
-  private final DateTimeFormatter dateTimeFormat;
 
   private String callerName = ""; //Name of person making call
   private String endDate = ""; //Date ended
@@ -25,13 +24,12 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   private String callerNumber = ""; //Caller phone number (person p# doing the calling)
   private String calleeNumber = ""; //Callee phone number (person p# being called)
   private String beginDate = ""; //Date the call started
+  private String duration = ""; //Call duration
 
   /**
    * Creates a new <code>PhoneCall</code> object.
    */
   PhoneCall(String[] args) {
-    this.dateTimeFormat = DateTimeFormatter.ofPattern("M/d/yyyy h:mm a");
-    if(args.length == 9) {
       this.callerName = args[0];
       this.callerNumber = args[1];
       this.calleeNumber = args[2];
@@ -41,17 +39,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
       this.endDate = args[6];
       this.endTime = args[7];
       this.endAMOrPM = args[8].toUpperCase();
-    } else if (args.length == 7) {
-      this.callerName = args[0];
-      this.beginDate = args[1];
-      this.beginTime = args[2];
-      this.beginAMOrPM = args[3].toUpperCase();
-      this.endDate = args[4];
-      this.endTime = args[5];
-      this.endAMOrPM = args[6].toUpperCase();
-    } else if (args.length == 1) {
-      this.callerName = args[0];
-    }
+      this.duration = getCallDuration();
   }
 
   /**
@@ -59,10 +47,9 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    *
    * @return A String of the callers name
    */
-  public String getCustomer() {
+  public String getCallerName() {
     return this.callerName;
   }
-
 
   /**
    * Grabs the caller number from the accessed <code>PhoneCall</code> class
@@ -148,9 +135,18 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    * @return Date to be used elsewhere
    */
   Date dateTimeMaker(String dateTimeString) {
-    LocalDateTime ldt = LocalDateTime.parse(dateTimeString, this.dateTimeFormat);
+    DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("M/d/yyyy h:mm a");
+    LocalDateTime ldt = LocalDateTime.parse(dateTimeString, dateTimeFormat);
     ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
     return Date.from(zdt.toInstant());
+  }
+
+  public String getBeginTimeStringFile() {
+    return this.beginDate + "," + this.beginTime + "," + this.beginAMOrPM;
+  }
+
+  public String getEndTimeStringFile() {
+    return this.endDate + "," + this.endTime + "," + this.endAMOrPM;
   }
 
   /**

@@ -30,6 +30,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    * Creates a new <code>PhoneCall</code> object.
    */
   PhoneCall(String[] args) {
+    if(args != null) {
       this.callerName = args[0];
       this.callerNumber = args[1];
       this.calleeNumber = args[2];
@@ -40,6 +41,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
       this.endTime = args[7];
       this.endAMOrPM = args[8].toUpperCase();
       this.duration = getCallDuration();
+    }
   }
 
   /**

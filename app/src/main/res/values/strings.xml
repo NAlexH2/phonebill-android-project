@@ -24,7 +24,8 @@
     <string name="readme_activity_ab_title">README</string>
     <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
     <string name="customer_instructions">Tap a customer to perform additional operations</string>
-    <string name="empty_call_list">No calls have been saved to this customer. Click \"Add\" to update this list.</string>
+    <string name="empty_call_list">No calls have been saved to this customer. Click \"Add\" to update this list.\n
+        Search will be enabled once a call is added.</string>
     <string name="add_call">Add</string>
     <string name="search_call">Search</string>
     <string name="reset">Reset</string>
@@ -36,5 +37,6 @@
     <string name="end_date_and_time">End Date and Time</string>
     <string name="mm_dd_yyyy">mm/dd/yyyy</string>
     <string name="hh_mm">hh:mm</string>
-    <string name="how_calls_are">Below are calls in ascending order by date</string>
+    <string name="how_calls_are">Below are calls in this bill, in ascending order by date</string>
+    <string name="search_tip">Enter the date and time you want to search for calls</string>
 </resources>

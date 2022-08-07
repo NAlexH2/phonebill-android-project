@@ -1,42 +1,65 @@
 <resources>
-    <string name="app_name">Phone Bill</string>
-    <string name="readme">
-        "\n This app is designed to track any number of customer phone \n"
-        "bills. From the main menu you can select either of the \n following buttons: \n"
-        "\n <b>- Help: </b>Displays this screen."
-        "\n <b>- Manage Customers: </b> Create a new entry for a new customer
-         \n to store their phone calls."\n\n
+  <string name="app_name">Phone Bill</string>
+  <string name="readme">
+    "\n This app is designed to track any number of customer phone \n"
+    "bills. From the main menu you can select either of the \n following buttons: \n"
+    "\n <b>- Help: </b>Displays this screen."
+    "\n <b>- Manage Customers: </b> Create a new entry for a new customer
+    \n to store their phone calls and manage them."\n
 
-        <big><b>Manage Customers - What is it good for?\n\n</b></big>
+ <big><b>Manage Customers - What is it good for?\n</b></big>
+    "If there are no customers currently stored, an alert message\n"
+    "will be present. Tapping <b>"Add Customer"</b> will allow you to add a \n new customer to the application.\n"
+ "To view and modify a customer tap the customer name.\n
+    "You will be taken to a new screen that will display all stored\n"
+    "calls (if present), as well as add, search and reset.\n\n"
+
+    <big><b>Add\n</b></big>
+    "This will allow you to add calls. Examples are present in each\n"
+    "field, and time is in 12hr format with AM/PM options. Failure\n"
+    "to enter correct format will present errors or a message at\n"
+    "at the bottom informing you of the issue.\n\n"
+
+    <big><b>Search\n</b></big>
+    "Similar input requirements as add, but is used to display\n"
+    "calls within a date range you have provided. The application\n"
+    "will then display all calls (non-inclusive) in that date range.\n\n"
+
+    <big><b>Reset\n</b></big>
+    "Resets the view to default if search has been used.\n"
+    "This is return to the list of calls back to the original\n"
+    "display of showing all calls of that customer in ascending\n"
+    "order.\n\n"
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<big><big><big><b>Enjoy!</b></big></big></big>"
 
 
     </string>
-    <string name="help">Help</string>
-    <string name="customers_activity_ab_title">Customer List</string>
-    <string name="manage_customers">Manage Customers</string>
-    <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
-    <string name="customer_list_is_empty">
+  <string name="help">Help</string>
+  <string name="customers_activity_ab_title">Customer List</string>
+  <string name="manage_customers">Manage Customers</string>
+  <string name="phone_bill_manager_5001">Phone Bill Manager 5001</string>
+  <string name="customer_list_is_empty">
         Customer list is empty! Click \"Add Customer\" to update this list.
     </string>
-    <string name="add_customer">Add Customer</string>
-    <string name="customer_name">Customer Name</string>
-    <string name="submit">Submit</string>
-    <string name="readme_activity_ab_title">README</string>
-    <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
-    <string name="customer_instructions">Tap a customer to perform additional operations</string>
-    <string name="empty_call_list">No calls have been saved to this customer. Click \"Add\" to update this list.\n
+  <string name="add_customer">Add Customer</string>
+  <string name="customer_name">Customer Name</string>
+  <string name="submit">Submit</string>
+  <string name="readme_activity_ab_title">README</string>
+  <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
+  <string name="customer_instructions">Tap a customer to perform additional operations</string>
+  <string name="empty_call_list">No calls have been saved to this customer. Click \"Add\" to update this list.\n
         Search will be enabled once a call is added.</string>
-    <string name="add_call">Add</string>
-    <string name="search_call">Search</string>
-    <string name="reset">Reset</string>
-    <string name="divider">divider</string>
-    <string name="info_input_tip">Enter the information for the phone call you wish to add</string>
-    <string name="input_hint_caller">Caller Phone Number</string>
-    <string name="input_hint_callee">Callee Phone Number</string>
-    <string name="start_date_and_time">Start Date and Time</string>
-    <string name="end_date_and_time">End Date and Time</string>
-    <string name="mm_dd_yyyy">mm/dd/yyyy</string>
-    <string name="hh_mm">hh:mm</string>
-    <string name="how_calls_are">Below are calls in this bill, in ascending order by date</string>
-    <string name="search_tip">Enter the date and time you want to search for calls</string>
+  <string name="add_call">Add</string>
+  <string name="search_call">Search</string>
+  <string name="reset">Reset</string>
+  <string name="divider">divider</string>
+  <string name="info_input_tip">Enter the information for the phone call you wish to add</string>
+  <string name="input_hint_caller">Caller Phone Number</string>
+  <string name="input_hint_callee">Callee Phone Number</string>
+  <string name="start_date_and_time">Start Date and Time</string>
+  <string name="end_date_and_time">End Date and Time</string>
+  <string name="mm_dd_yyyy">mm/dd/yyyy</string>
+  <string name="hh_mm">hh:mm</string>
+  <string name="how_calls_are">Below are calls in this bill, in ascending order by date</string>
+  <string name="search_tip">Enter the date and time you want to search for calls</string>
 </resources>

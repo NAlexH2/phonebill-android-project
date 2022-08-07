@@ -19,7 +19,8 @@ public class TextDumper {
     try (PrintWriter pw = new PrintWriter(this.writer)) {
       SortedSet<PhoneCall> calls = bill.getPhoneCalls();
       for (PhoneCall call : calls) {
-        //Go through the bill calls collection, and write to the file using a built string using PhoneCalls methods
+        //Go through the bill calls collection, and write to the file using a built string
+        // using PhoneCalls methods
         pw.println(lineBuilder(call));
       }
       pw.flush();

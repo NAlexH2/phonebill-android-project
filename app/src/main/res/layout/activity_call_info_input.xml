@@ -87,6 +87,7 @@
     android:layout_marginBottom="28dp"
     android:text="@string/info_input_tip"
     android:textAlignment="center"
+    android:textColor="#000000"
     android:textSize="20sp"
     app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
     app:layout_constraintEnd_toEndOf="parent"

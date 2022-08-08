@@ -46,7 +46,7 @@
   <string name="submit">Submit</string>
   <string name="readme_activity_ab_title">README</string>
   <string name="main_activity_ab_title">Phone Bill - Main Menu</string>
-  <string name="customer_instructions">Tap a customer to perform additional operations</string>
+  <string name="customer_instructions">Tap a customer to view their bill and perform additional operations</string>
   <string name="empty_call_list">No calls have been saved to this customer. Click \"Add\" to update this list.\n
         Search will be enabled once a call is added.</string>
   <string name="add_call">Add</string>

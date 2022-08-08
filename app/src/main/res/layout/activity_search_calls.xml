@@ -79,23 +79,23 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <EditText
-    android:id="@+id/editTextDate3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="56dp"
-    android:layout_marginTop="196dp"
-    android:layout_marginEnd="145dp"
-    android:autofillHints=""
-    android:ems="10"
-    android:hint="@string/mm_dd_yyyy"
-    android:inputType="date"
-    android:minHeight="48dp"
-    android:textColorHint="#757575"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="DuplicateSpeakableTextCheck" />
+      android:id="@+id/editTextDate3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="56dp"
+      android:layout_marginTop="196dp"
+      android:layout_marginEnd="145dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/mm_dd_yyyy"
+      android:inputType="date|text"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="DuplicateSpeakableTextCheck" />
 
   <EditText
     android:id="@+id/editTextTime3"
@@ -128,23 +128,23 @@
     tools:ignore="SpeakableTextPresentCheck" />
 
   <EditText
-    android:id="@+id/editTextDate4"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="56dp"
-    android:layout_marginTop="352dp"
-    android:layout_marginEnd="146dp"
-    android:autofillHints=""
-    android:ems="10"
-    android:hint="@string/mm_dd_yyyy"
-    android:inputType="date"
-    android:minHeight="48dp"
-    android:textColorHint="#757575"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="DuplicateSpeakableTextCheck" />
+      android:id="@+id/editTextDate4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="56dp"
+      android:layout_marginTop="352dp"
+      android:layout_marginEnd="146dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/mm_dd_yyyy"
+      android:inputType="date|text"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="DuplicateSpeakableTextCheck" />
 
   <TextView
     android:id="@+id/textView7"

@@ -1,5 +1,5 @@
 # About this project
-This was a project that was given to me during my summer 2022 term at Portland State University in the "Advanced Programming with Java" class where we did incremental development on various projects that culminated our knowledge to this point. All skills and tools we learned throughout the term were put to the test for this project and required us to develop a simple (but functional) toy android application to "manage" customer phone bills.
+This was a project that was given to me during my summer 2022 term at Portland State University in the "Advanced Programming with Java" class where I did incremental development on various projects that culminated our knowledge to this point. All skills and tools I learned throughout the term were put to the test for this project and required us to develop a simple (but functional) toy android application to "manage" customer phone bills.
 
 The previous projects took on different forms using basic command line programs which took in command line arguments to handle the user’s request. Each of these projects required tests to support sufficient code coverage and included documentation as well.
 
@@ -28,7 +28,7 @@ Use the emulated device provided to explore within Android Studio as well under 
 
 
 # How long did this take/How much time did you have?
-We were provided 2 weeks to complete the project, in which I spent about 30 hours creating it from the ground up and utilizing some code from the previous projects.
+I was provided 2 weeks to complete the project, in which I spent about 30 hours creating it from the ground up and utilizing some code from the previous projects.
 
 
 # What challenges did you face in this project?

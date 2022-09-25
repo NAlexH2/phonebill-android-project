@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".CallDetailsActivity">
+
+  <EditText
+      android:id="@+id/editTextDate2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="1dp"
+      android:layout_marginEnd="185dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/mm_dd_yyyy"
+      android:inputType="date|text"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView4"
+      tools:ignore="DuplicateSpeakableTextCheck" />
+
+  <TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="27dp"
+    android:layout_marginTop="39dp"
+    android:layout_marginEnd="266dp"
+    android:text="@string/end_date_and_time"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+
+  <EditText
+    android:id="@+id/editTextTime2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="185dp"
+    android:autofillHints=""
+    android:ems="10"
+    android:hint="@string/hh_mm"
+    android:inputType="time"
+    android:minHeight="48dp"
+    android:textColorHint="#757575"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextDate2"
+    tools:ignore="DuplicateSpeakableTextCheck" />
+
+  <Button
+    android:id="@+id/call_info_submit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="95dp"
+    android:layout_marginEnd="64dp"
+    android:layout_marginBottom="16dp"
+    android:onClick="onSubmit"
+    android:text="@string/submit"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/call_info_cancel" />
+
+  <Button
+    android:id="@+id/call_info_cancel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="68dp"
+    android:layout_marginBottom="16dp"
+    android:onClick="onCancel"
+    android:text="@android:string/cancel"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="297dp"
+    android:layout_height="51dp"
+    android:layout_marginStart="57dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="57dp"
+    android:layout_marginBottom="28dp"
+    android:text="@string/info_input_tip"
+    android:textAlignment="center"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+    android:id="@+id/editTextPhone"
+    android:layout_width="371dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="28dp"
+    android:layout_marginEnd="20dp"
+    android:autofillHints=""
+    android:ems="10"
+    android:hint="@string/input_hint_caller"
+    android:inputType="phone"
+    android:textAlignment="textStart"
+    android:textColorHint="#757575"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+  <EditText
+    android:id="@+id/editTextPhone2"
+    android:layout_width="371dp"
+    android:layout_height="51dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="20dp"
+    android:autofillHints=""
+    android:ems="10"
+    android:hint="@string/input_hint_callee"
+    android:inputType="phone"
+    android:textAlignment="textStart"
+    android:textColorHint="#757575"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+  <TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="266dp"
+    android:text="@string/start_date_and_time"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextPhone2" />
+
+  <EditText
+    android:id="@+id/editTextTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="14dp"
+    android:autofillHints=""
+    android:ems="10"
+    android:hint="@string/hh_mm"
+    android:inputType="time"
+    android:minHeight="48dp"
+    android:textColorHint="#757575"
+    app:layout_constraintEnd_toStartOf="@+id/amPMSpinner"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+  <Spinner
+    android:id="@+id/amPMSpinner"
+    android:layout_width="102dp"
+    android:layout_height="50dp"
+    android:layout_marginTop="91dp"
+    android:layout_marginEnd="69dp"
+    android:layout_marginBottom="105dp"
+    app:layout_constraintBottom_toTopOf="@+id/amPMSpinner2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextPhone2"
+    tools:ignore="SpeakableTextPresentCheck" />
+
+  <EditText
+      android:id="@+id/editTextDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="185dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/mm_dd_yyyy"
+      android:inputType="date|text"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+  <Spinner
+    android:id="@+id/amPMSpinner2"
+    android:layout_width="102dp"
+    android:layout_height="51dp"
+    android:layout_marginStart="14dp"
+    android:layout_marginTop="106dp"
+    android:layout_marginEnd="69dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/editTextTime2"
+    app:layout_constraintTop_toBottomOf="@+id/amPMSpinner"
+    tools:ignore="SpeakableTextPresentCheck"
+    tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

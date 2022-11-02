@@ -12,9 +12,14 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+
+// This class and activity was partitioned off to its own place as it's extensive and requires
+// more work than originally expected
 public class CallDetailsActivity extends AppCompatActivity {
 
+  // Spinners for start time of day and end.
   private Spinner startToD, endToD;
+  // Text boxes for each parameter for the call
   private EditText callerNumber, calleeNumber, startDate, startTime, endDate, endTime;
 
   private String customerName;
@@ -27,11 +32,15 @@ public class CallDetailsActivity extends AppCompatActivity {
     Intent previousIntent = getIntent();
     Bundle intentsExtras = previousIntent.getExtras();
 
+    // Get the customers names from the previous activity. Checking to avoid critical failure.
+    // Shouldn't but could so why not. Costs nothing.
     if(intentsExtras != null) {
       this.customerName = intentsExtras.getString("custName");
     }
+
     ArrayAdapter<String> timeOfDaySpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
     timeOfDaySpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    // Give the spinner some things to pick from
     timeOfDaySpinner.addAll("AM","PM");
     this.callerNumber = findViewById(R.id.editTextPhone);
     this.calleeNumber = findViewById(R.id.editTextPhone2);
@@ -43,12 +52,13 @@ public class CallDetailsActivity extends AppCompatActivity {
     this.endTime = findViewById(R.id.editTextTime2);
     this.endToD = findViewById(R.id.amPMSpinner2);
     this.endToD.setAdapter(timeOfDaySpinner);
-
-
   }
 
+  // Once the user has entered data, and clicks submit.
   public void onSubmit(View view) {
+    // Make an intent from the current intent
     Intent currentIntent = new Intent();
+    // Parse all the data to these strings
     String callerNumber = this.callerNumber.getText().toString();
     String calleeNumber = this.calleeNumber.getText().toString();
     String startDate = this.startDate.getText().toString();
@@ -57,34 +67,52 @@ public class CallDetailsActivity extends AppCompatActivity {
     String endDate = this.endDate.getText().toString();
     String endTime = this.endTime.getText().toString();
     String endToD = this.endToD.getSelectedItem().toString();
-    InformationParser ip = new InformationParser();
     String combinedStart = startDate + " " + startTime + " " + startToD;
     String combinedEnd = endDate + " " + endTime + " " + endToD;
     String[] callInfo = new String[]{this.customerName, callerNumber, calleeNumber, startDate,
         startTime, startToD, endDate, endTime, endToD};
 
+    // If the data is bad/wrong don't actually submit and just "return" to the activity.
+    // Data isn't lost and various alerts are provided to the user to fix things
     if(!validation(callInfo))
       return;
 
+    InformationParser ip = new InformationParser();
     String result;
     result = ip.dateTimeValidator(new PhoneCall(null), combinedStart, combinedEnd);
+    // Weird and lazy exception handling
     if(!result.isEmpty()) {
       Toast.makeText(this, "Unable to add call. " + result, Toast.LENGTH_LONG)
           .show();
       return;
     }
 
+    // Otherwise, we can make a new call and add it to the current intents extras to "send back"
+    // to the previous activity!
     PhoneCall call = new PhoneCall(callInfo);
     currentIntent.putExtra("call", call);
+    // set the result of the current activity
     setResult(RESULT_OK, currentIntent);
+    // finish from here!
     finish();
   }
 
+  /**
+   * User has elected to not add any calls.
+   * @param view - Current activity
+   */
   public void onCancel (View view) {
     setResult(RESULT_CANCELED, null);
     finish();
   }
 
+  /**
+   * Validates all the information provided from the user to ensure it's not bad.
+   * @param callInfo - Information provided by the user of the call they are trying to add to
+   *                 a customer.
+   * @return true if it passes all checks, false otherwise and make errors visible for each box
+   * that needs to be fixed.
+   */
   private boolean validation(String[] callInfo) {
     boolean areWeOkay = true;
 

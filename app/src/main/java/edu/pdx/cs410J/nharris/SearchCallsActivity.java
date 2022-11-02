@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+/**
+ * Loads and enables the activity to search customer calls based on date and time
+ */
 public class SearchCallsActivity extends AppCompatActivity {
 
   private Spinner startToD, endToD;
@@ -36,6 +39,12 @@ public class SearchCallsActivity extends AppCompatActivity {
     this.endToD.setAdapter(timeOfDaySpinner);
   }
 
+
+  /**
+   * Gathers date/time information neatly to provide back to the CustomersPhoneBillActivity as
+   * a bundle of extras where CustomersPhoneBillActivity would execute the search
+   * @param view - Current activity
+   */
   public void onSubmit(View view) {
     Intent currentIntent = new Intent();
     String startDate = this.startDate.getText().toString();
@@ -44,33 +53,40 @@ public class SearchCallsActivity extends AppCompatActivity {
     String endDate = this.endDate.getText().toString();
     String endTime = this.endTime.getText().toString();
     String endToD = this.endToD.getSelectedItem().toString();
-    InformationParser ip = new InformationParser();
     String combinedStart = startDate + " " + startTime + " " + startToD;
     String combinedEnd = endDate + " " + endTime + " " + endToD;
     String[] searchInfo = new String[]{startDate, startTime, startToD, endDate, endTime, endToD};
 
+    // "return" from this function to display base activity.
     if(!validation(searchInfo))
       return;
 
+    // Crappy empty PhoneCall because dateTimeValidator requires one, better than re-writing code.
+    // Probably a much smarter way to do this.
     PhoneCall call = new PhoneCall(null);
+    InformationParser ip = new InformationParser();
     String result;
       result = ip.dateTimeValidator(call, combinedStart, combinedEnd);
+      // If dateTimeValidator found an error show that error here. Lazy/weird exception handling.
       if(!result.isEmpty()) {
         Toast.makeText(this, "Bad date format: " + result, Toast.LENGTH_LONG)
             .show();
         return;
       }
 
+    // Otherwise, bundle it into the current intents extras and finish with an ok result!
     currentIntent.putExtra("searchInfo", searchInfo);
     setResult(RESULT_OK, currentIntent);
     finish();
   }
 
+  // User has chosen not to search, gets outta this activity.
   public void onCancel(View view) {
     setResult(RESULT_CANCELED, null);
     finish();
   }
 
+  // Just checking formats to set alert errors on specific boxes within the search activity.
   private boolean validation(String[] callInfo) {
     boolean areWeOkay = true;
 

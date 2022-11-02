@@ -4,6 +4,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
+// Originally for parsing all info, but found it easier to just do date, and parse the rest
+// else where for various instances of use.
 class InformationParser {
 
   String dateTimeValidator(PhoneCall call, String start, String end) {

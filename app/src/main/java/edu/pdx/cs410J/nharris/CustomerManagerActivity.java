@@ -88,34 +88,60 @@ public class CustomerManagerActivity extends AppCompatActivity {
 
   }
 
+  /**
+   * Enables a clickListener to be available on the customer list. This allows app to load the
+   * correct customer once it has been tapped in the app by the user and take the user to that
+   * customers phone bill.
+   * @param view - In this case, the current activities view via <code>getCurrentFocus()</code>
+   *             as the passed in argument.
+   */
   public void onListViewClick(View view) {
+    /* Establishing a click listener on the list of customers. This is only active the moment the
+    list has been set to be visible and not hidden inside the areThereCusomters function.
+     */
     this.customerList.setOnItemClickListener((parent, view1, position, id) -> {
       String selected_customer = (String) parent.getItemAtPosition(position);
+      // Once the clickListener has detected interaction with a item in the list, load up an intent
       Intent intent = new Intent(getBaseContext(), CustomersPhoneBillActivity.class);
+      // add some extra info so when we start the activity for this intent, we can ensure the app
+      // loads the correct customer.
       intent.putExtra("custInfo", selected_customer);
+      // Start the activity from the intent we just created
       startActivity(intent);
     });
   }
 
+  /**
+   * Generates a dialogue box for the user the moment the add button has been tapped.
+   * @param view - View passed in from <code>getCurrentFocus()</code>
+   */
   public void addCustomerShowPopup(View view) {
+    // Another clickListener
     this.addCustomerButton.setOnClickListener(view1 -> {
-      //Simple popup alert box! Fantastic!
+      // Simple popup alert box! Fantastic!
       AlertDialog.Builder customerNameAlertBox =
           new AlertDialog.Builder(CustomerManagerActivity.this);
+      // Few prompts to display to the user on what is required and what is not allowed
       customerNameAlertBox.setTitle("Customer Name");
       customerNameAlertBox.setMessage("Invalid characters: \n<  >  :  \\  |  ?  *  \\\\  //");
 
-      //Inserts a text field of some type determined....
+      // Inserts a text field of some type determined....
       EditText cNameInput = new EditText(CustomerManagerActivity.this);
-      //HERE!
+      // HERE! The type being text, specifically around a persons name
       cNameInput.setInputType(InputType.TYPE_CLASS_TEXT |
           InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+
+      // Display the alert box we've built above
       customerNameAlertBox.setView(cNameInput);
+      // Determine what the positive button does/says
       customerNameAlertBox.setPositiveButton("Add Customer",
           (dialogInterface, i) -> {
             this.customerName = cNameInput.getText().toString();
             if(!customerName.isEmpty()) {
+              // create a new customer file
               makeCustomerFile(this.customerName);
+              // refresh the customer list, which also calls areThereCustomers to disable/enable
+              // respective widgets to update hints to the user as well as the customer list
               refreshCustomerList(this.allCustomers);
             }
             else
@@ -124,6 +150,8 @@ public class CustomerManagerActivity extends AppCompatActivity {
                   Toast.LENGTH_LONG).show();
           });
 
+      // Determine what the negative button does/says - in this case, just close the alert box
+      // and do nothing.
       customerNameAlertBox.setNegativeButton("Cancel",
           (dialogInterface, i) -> dialogInterface.cancel());
       customerNameAlertBox.show();
@@ -131,15 +159,23 @@ public class CustomerManagerActivity extends AppCompatActivity {
   }
 
 
+  /**
+   * Create a customers file inside the apps data directory.
+   * @param customerName - String provided by the user passed in from
+   *                     <code>addCustomerShowPopup</code>
+   */
   void makeCustomerFile (String customerName) {
     String[] invalidChars = new String[]{"<", ">", ":", "\"", "|", "?", "*", "\\\\", "//"};
+    // If any of the above chars are found, the function returns and does not create a file.
     for (String i : invalidChars) {
       if (customerName.contains(i)) {
+        // It does alert the user telling them what happened
         Toast.makeText(getBaseContext(),
             "Customer name contains invalid characters!", Toast.LENGTH_LONG).show();
         return;
       }
     }
+    // Otherwise, lets get to making it.
     String fileName = customerName + ".txt";
     File file = new File(this.appPath, fileName);
     if(!file.exists()) {
@@ -153,6 +189,7 @@ public class CustomerManagerActivity extends AppCompatActivity {
             "Unable to create file. Try again.", Toast.LENGTH_LONG).show();
       }
     }
+    // However if the customer exists, it can't be made again so we alert the user.
     else Toast.makeText(getBaseContext(),
         "Customer already on file", Toast.LENGTH_LONG).show();
   }
@@ -160,8 +197,8 @@ public class CustomerManagerActivity extends AppCompatActivity {
   /**
    * Refreshes the <code>allCustomers</code> from the app's data folder. This function is only
    * called when the activity is first started, or a new customer is added through
-   * <code></code>
-   * @param allCustomerBills
+   * <code>addCustomerShowPopup</code>
+   * @param allCustomerBills - The current ArrayAdapter containing all current customers available
    */
   private void refreshCustomerList(ArrayAdapter<String> allCustomerBills) {
     if(Objects.requireNonNull(this.appPath.listFiles()).length != 0) {
